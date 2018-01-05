@@ -20,10 +20,10 @@ $(function() {
         startDate: start,
         endDate: end,
         ranges: {
-            'Today': [moment().startOf('day'), moment().endOf('day')],
-            'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().endOf('day')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'Today': [moment().startOf('day'), moment().add(1, 'day').startOf('day')],
+            'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().startOf('day')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment().startOf('day')],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment().startOf('day')],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
