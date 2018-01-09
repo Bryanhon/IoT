@@ -15,10 +15,6 @@ Project for IoT involving uploading data from a raspberry pi to a MySQL database
 
 * **Bart Stukken** - *Teacher* [Bart](http://0x42.be/) 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used
