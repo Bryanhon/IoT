@@ -13,7 +13,7 @@ Project for IoT involving uploading data from a raspberry pi to a MySQL database
 
 * **Bryan Honof** - *Initial work* - [Bryan](https://github.com/Bryanhon)
 
-* **Bart Stukken** - *Teacher* [Bart](http://0x42.be/) 
+* **Bart Stukken** - *Teacher* - [Bart](http://0x42.be/) 
 
 ## Acknowledgments
 
