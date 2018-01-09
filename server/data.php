@@ -1,43 +1,31 @@
 <?php
-//setting header to json
+include_once "dbh.php";
+
+$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+
+if ($conn->connect_error) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+
 header('Content-Type: application/json');
 
-//get URL variables
+$start 	= mysqli_real_escape_string($conn, $_GET["startDate"]);
+$end 	= mysqli_real_escape_string($conn, $_GET["endDate"]);
 
+$query = "SELECT * FROM sensorData WHERE timedate BETWEEN ? AND ? ORDER BY timedate;";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ss", $start, $end);
+$stmt->execute();
 
-//database
-define('DB_HOST', 'localhost');
-define('DB_USERNAME', '');
-define('DB_PASSWORD', '');
-define('DB_NAME', '');
+$stmt->bind_result($ID, $timedate, $value);
+$result = array();
 
-//get connection
-$mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if(!$mysqli){
-	die("Connection failed: " . $mysqli->error);
+while ($stmt->fetch()) {
+	$result[] = array("ID"=>$ID, "timedate"=>$timedate, "value"=>$value);
 }
 
-//query to get data from the table
-if (isset($_GET["startDate"]) && isset($_GET["endDate"]))
-	$query = sprintf("SELECT * FROM sensorData WHERE timedate BETWEEN \"%s\" AND \"%s\" ORDER BY timedate;", $_GET["startDate"], $_GET["endDate"]);
-else
-	$query = sprintf("SELECT * FROM sensorData ORDER BY timedate;");
+$stmt->close();
+$conn->close();
 
-//execute query
-$result = $mysqli->query($query);
-
-//loop through the returned data
-$data = array();
-foreach ($result as $row) {
-	$data[] = $row;
-}
-
-//free memory associated with result
-$result->close();
-
-//close connection
-$mysqli->close();
-
-//now print the data
-echo json_encode($data);
+echo json_encode($result);

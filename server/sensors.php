@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<title>IoT | Sensors</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
 
+<body>
+	<div class="topnav">
+	  <a href="index.html">Home</a>
+	  <a class="active" href="sensors.php">Sensors</a>
+	  <a href="sensorData.php">Sensor Data</a>
+	  <a style="float:right" href="about.html">About</a>
+	</div>
+	
+	<br>
+	
 <?php
+include_once "dbh.php";
+
 echo "<table style='border: solid 1px black; margin: auto;'>";
-echo "<tr><th>ID</th><th>Last seen</th><th>Last known IP</th></tr>";
+echo "<tr><th>ID</th><th>Name</th><th>Last seen</th><th>Last known IP</th></tr>";
 
 class TableRows extends RecursiveIteratorIterator { 
     function __construct($it) { 
@@ -24,13 +39,8 @@ class TableRows extends RecursiveIteratorIterator {
     } 
 } 
 
-$servername = "localhost";
-$username = "";
-$password = "";
-$dbname = "";
-
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$DB_NAME;dbname=$DB_NAME", $DB_USER, $DB_PASS);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT * FROM sensors"); 
     $stmt->execute();

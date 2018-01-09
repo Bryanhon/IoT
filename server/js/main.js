@@ -1,6 +1,6 @@
 $(function() {
-    var start = moment().subtract(29, 'days');
-    var end = moment();
+    var start = moment().startOf('day');
+    var end = moment().add(1, 'day').startOf('day');
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
@@ -46,28 +46,35 @@ $(function() {
             var timedate = [];
             var value1 = [];
             var value2 = [];
+			var value3 = [];
 
             for (var i in data)
                 timedate.push(data[i].timedate);
 
             timedateNoDupe = Array.from(new Set(timedate));
 
-            console.log(timedateNoDupe);
+            //console.log(timedateNoDupe);
 
             for (var i in data) {
                 for (var y = 0; y < timedateNoDupe.length; y++) {
                     if (data[i].timedate == timedateNoDupe[y]) {
-                        if (data[i].sensor_id == '1') {
-                            sensor_id.push(data[i].sensor_id);
+                        if (data[i].ID == '1') {
+                            sensor_id.push(data[i].ID);
                             value1.push(data[i].value);
                         } else {
                             value1.push("NaN");
                         }
-                        if (data[i].sensor_id == '2') {
-                            sensor_id.push(data[i].sensor_id);
+                        if (data[i].ID == '2') {
+                            sensor_id.push(data[i].ID);
                             value2.push(data[i].value);
                         } else {
                             value2.push("NaN");
+                        }
+						if (data[i].ID == '3') {
+                            sensor_id.push(data[i].ID);
+                            value3.push(data[i].value);
+                        } else {
+                            value3.push("NaN");
                         }
                     }
                 }
@@ -77,16 +84,18 @@ $(function() {
                 labels: timedateNoDupe,
                 datasets: [{
                         label: "Temperature 'C",
+						type: 'line',
                         fill: false,
                         lineTension: 0.1,
-                        backgroundColor: "rgba(59, 89, 152, 0.75)",
-                        borderColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBorderColor: "rgba(59, 89, 152, 1)",
+                        backgroundColor: "rgba(255, 0, 0, 0.6)",
+                        borderColor: "rgba(255, 0, 0, 1)",
+                        pointHoverBackgroundColor: "rgba(255, 0, 0, 0.6)",
+                        pointHoverBorderColor: "rgba(255, 0, 0, 1)",
                         data: value1
                     },
                     {
                         label: "Humidity %",
+						type: 'line',
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(29, 202, 255, 0.75)",
@@ -94,6 +103,17 @@ $(function() {
                         pointHoverBackgroundColor: "rgba(29, 202, 255, 1)",
                         pointHoverBorderColor: "rgba(29, 202, 255, 1)",
                         data: value2
+                    },
+                    {
+                        label: "Light %",
+						type: 'bar',
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(255, 165, 0, 0.75)",
+                        borderColor: "rgba(255, 165, 0, 1)",
+                        pointHoverBackgroundColor: "rgba(255, 165, 0, 1)",
+                        pointHoverBorderColor: "rgba(255, 165, 0, 1)",
+                        data: value3
                     }
                 ]
             };
@@ -112,6 +132,7 @@ $(function() {
                     animationDuration: 0,
                 },
                 responsiveAnimationDuration: 0,
+				spanGaps: true,
             };
             var ctx = $("#mycanvas");
 
@@ -119,7 +140,7 @@ $(function() {
                 window.LineGraph.destroy();
 
             window.LineGraph = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: chartdata,
                 options: options,
             });

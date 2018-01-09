@@ -1,40 +1,43 @@
 <!doctype html>
-
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-
-	<title>IoT</title>
-	<meta name="description" content="IoT project">
-	<meta name="author" content="Bryan Honof">
-  
-  	<!-- Include Required Prerequisites -->
-	<script type="text/javascript" src="./js/jquery.min.js"></script>
-	<script type="text/javascript" src="./js/moment.min.js"></script>
-	<script type="text/javascript" src="js/Chart.min.js"></script>
-	<script type="text/javascript" src="js/linegraph.js"></script>
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	 
-	<!-- Include Date Range Picker -->
-	<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-	<!--<script type="text/javascript" src="./js/datepicker.js"></script> -->
-
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
+    <title>IoT | Home</title>
+    <meta name="description" content="IoT project">
+    <meta name="author" content="Bryan Honof">
+    <meta charset="utf-8">
+	
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 </head>
 
 <body>
-	<div class="panel panel-default">
-		<div id="reportrange" class="center panel-footer" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 50%">
-			<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-			<span></span> <b class="caret"></b>
-		</div>
-		<div class="chart-container panel-body">
-			<canvas id="mycanvas"></canvas>
-		</div>
+	<div class="topnav">
+	  <a class="active" href="index.html">Home</a>
+	  <a href="sensors.php">Sensors</a>
+	  <a href="sensorData.php">Sensor Data</a>
+	  <a style="float:right" href="about.html">About</a>
 	</div>
+	
+	<br>
+	
+    <div id="reportrange" class="center panel-footer" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 50%">
+        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+        <span></span> <b class="caret"></b>
+    </div>
+    <div class="chart-container panel-body">
+        <canvas id="mycanvas"></canvas>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+<![endif]-->
 </body>
+
 </html>
