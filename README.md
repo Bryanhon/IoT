@@ -2,7 +2,7 @@
 
 Project for IoT involving uploading data from a raspberry pi to a MySQL database and read that data out into a graph.
 
-![screenshot](/IoT/msc/screenshot.png?raw=true "Screenshot")
+![screenshot](./misc/screenshot.png?raw=true "Screenshot")
 
 ## Built With
 
