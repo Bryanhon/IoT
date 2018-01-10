@@ -55,3 +55,7 @@ Made sure there is no possibilty for an SQL injection.
 ## Different Graph tool
 
 Chart.js was used and had to be learned.
+
+## Helping people
+
+I put a fair amount of time in helping Ine, Jason and Joeri with setting up Chart.js to work on their sites, helping with the raspberry pi.
