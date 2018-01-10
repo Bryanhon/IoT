@@ -2,6 +2,8 @@
 
 Project for IoT involving uploading data from a raspberry pi to a MySQL database and read that data out into a graph.
 
+![screenshot](/IoT/msc/screenshot.png?raw=true "Screenshot")
+
 ## Built With
 
 * [DHT11_Python](https://github.com/szazo/DHT11_Python) - DHT11 temperature/humidity sensor library for python
